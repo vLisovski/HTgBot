@@ -24,8 +24,8 @@ public class User {
     private long chatId;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "position")
-    private Position position;
+    @JoinColumn(name = "type_position")
+    private Positions position;
 
     @Column(name = "names")
     private String names;

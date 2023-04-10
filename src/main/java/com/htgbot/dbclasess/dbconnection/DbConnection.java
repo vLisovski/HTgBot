@@ -18,7 +18,7 @@ public class DbConnection {
             configuration.addAnnotatedClass(QuizText.class);
             configuration.addAnnotatedClass(ChooseQuiz.class);
             configuration.addAnnotatedClass(Authorize.class);
-            configuration.addAnnotatedClass(TypePosition.class);
+            configuration.addAnnotatedClass(Positions.class);
 
             StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
             sessionFactory = configuration.buildSessionFactory(builder.build());

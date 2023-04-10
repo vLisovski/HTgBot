@@ -14,7 +14,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class TypePosition {
+public class Positions {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

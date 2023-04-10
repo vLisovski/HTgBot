@@ -8,12 +8,12 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 public class BotInitializer extends TelegramLongPollingBot {
     @Override
     public String getBotUsername() {
-        return null;
+        return BotInitStrings.BOT_USERNAME;
     }
 
     @Override
     public String getBotToken() {
-        return null;
+        return BotInitStrings.BOT_TOKEN;
     }
 
     @Override

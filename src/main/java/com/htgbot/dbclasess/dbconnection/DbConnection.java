@@ -1,25 +1,41 @@
 package com.htgbot.dbclasess.dbconnection;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+
+import com.htgbot.dbclasess.entities.*;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+
 
 public class DbConnection {
-    private Connection connection;
-
-    private DbConnection() throws SQLException {
-        connection = DriverManager.getConnection("jdbc:postgresql://194.67.105.79:5432/htn_bunny_claw_db", "htn_bunny_claw_user", "31913");
-    }
-
-    public Connection getConnection() {
-        return connection;
-    }
-
     private static DbConnection instance = null;
 
-    public static DbConnection getInstance() throws SQLException {
+    private SessionFactory sessionFactory;
+
+    private DbConnection() {
+        try {
+            Configuration configuration = new Configuration().configure();
+            configuration.addAnnotatedClass(User.class);
+            configuration.addAnnotatedClass(QuizText.class);
+            configuration.addAnnotatedClass(ChooseQuiz.class);
+            configuration.addAnnotatedClass(Authorize.class);
+            configuration.addAnnotatedClass(TypePosition.class);
+
+            StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
+            sessionFactory = configuration.buildSessionFactory(builder.build());
+
+        } catch (Exception e) {
+            System.out.println("HibernateSession init error:" + e);
+        }
+    }
+
+    public static DbConnection getInstance() {
         if (instance == null) {
             instance = new DbConnection();
         }
         return instance;
+    }
+
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
     }
 }

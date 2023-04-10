@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 
+
 @Entity
 @Table(name = "user")
 @Builder
@@ -22,8 +23,9 @@ public class User {
     @Column(name = "chat_id")
     private long chatId;
 
-    @Column(name = "position")
-    private int position;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "position")
+    private Position position;
 
     @Column(name = "names")
     private String names;
@@ -36,5 +38,6 @@ public class User {
 
     @Column(name = "photos")
     private long photos;
+
 
 }

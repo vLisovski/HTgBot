@@ -19,42 +19,42 @@ public class InlineButtonsMain {
         row = new ArrayList<>();
         button = new InlineKeyboardButton();
         button.setText(StringsMain.MAIN_MENU_BUTTON_QUIZ_GAME_TEXT);
-        button.setCallbackData(ButtonsCallbacks.mainMenuButtonQuizGame);
+        button.setCallbackData(ButtonsCallbacks.MAIN_MENU_BUTTON_EDUCATION);
         row.add(button);
         keyboard.add(row);
 
         row = new ArrayList<>();
         button = new InlineKeyboardButton();
         button.setText(StringsMain.MAIN_MENU_BUTTON_GUIDING_TEXT);
-        button.setCallbackData(ButtonsCallbacks.mainMenuButtonGuiding);
+        button.setCallbackData(ButtonsCallbacks.MAIN_MENU_BUTTON_GUIDING);
         row.add(button);
         keyboard.add(row);
 
         row = new ArrayList<>();
         button = new InlineKeyboardButton();
         button.setText(StringsMain.MAIN_MENU_BUTTON_EMPLOYEES_TEXT);
-        button.setCallbackData(ButtonsCallbacks.mainMenuButtonEmployees);
+        button.setCallbackData(ButtonsCallbacks.MAIN_MENU_BUTTON_EMPLOYEES);
         row.add(button);
         keyboard.add(row);
 
         row = new ArrayList<>();
         button = new InlineKeyboardButton();
         button.setText(StringsMain.MAIN_MENU_BUTTON_ABOUT_TEXT);
-        button.setCallbackData(ButtonsCallbacks.mainMenuButtonAbout);
+        button.setCallbackData(ButtonsCallbacks.MAIN_MENU_BUTTON_ABOUT);
         row.add(button);
         keyboard.add(row);
 
         row = new ArrayList<>();
         button = new InlineKeyboardButton();
         button.setText(StringsMain.MAIN_MENU_BUTTON_FAQ_TEXT);
-        button.setCallbackData(ButtonsCallbacks.mainMenuButtonFAQ);
+        button.setCallbackData(ButtonsCallbacks.MAIN_MENU_BUTTON_FAQ);
         row.add(button);
         keyboard.add(row);
 
         row = new ArrayList<>();
         button = new InlineKeyboardButton();
         button.setText(StringsMain.MAIN_MENU_BUTTON_SUPPORT_TEXT);
-        button.setCallbackData(ButtonsCallbacks.mainMenuButtonSupport);
+        button.setCallbackData(ButtonsCallbacks.MAIN_MENU_BUTTON_SUPPORT);
         row.add(button);
         keyboard.add(row);
 

@@ -9,7 +9,8 @@ public class Support {
 
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(transData.getChatId());
-        sendMessage.setText(StringsSupport.ENTER_APPEAL_TEXT);
+        sendMessage.setText(StringsSupport.SUPPORT_TEXT);
+        sendMessage.setReplyMarkup(InlineButtonsSupport.getKeyboard());
 
         return sendMessage;
     }

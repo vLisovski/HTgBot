@@ -7,13 +7,14 @@ public class TransData {
 
     public TransData(long chatId) {
         this.chatId = chatId;
-        state = State.LOGIN;
+        state = State.START;
         dataStorage = new DataStorage();
     }
 
     public void setState(State state) {
         this.state = state;
     }
+
     public State getState() {
         return state;
     }
@@ -21,6 +22,7 @@ public class TransData {
     public DataStorage getDataStorage() {
         return dataStorage;
     }
+
     public long getChatId() {
         return chatId;
     }

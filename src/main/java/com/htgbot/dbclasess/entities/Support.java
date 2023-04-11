@@ -8,18 +8,22 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 
+
 @Entity
-@Table(name = "quiz_text")
+@Table(name = "support")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+public class Support {
 
-public class QuizText {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "text_quiz")
-    private String textQuiz;
+    @Column(name = "text_from_support")
+    private String textFromSupport;
+
+    @Column(name = "chat_id")
+    private long chatId;
 }

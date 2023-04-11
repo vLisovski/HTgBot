@@ -33,8 +33,10 @@ public class User {
     @Column(name = "contacts")
     private String contacts;
 
-    @Column(name = "quiz_game")
-    private int quizGame;
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "quiz_game")
+    private QuizGame quizGame;
+
 
     @Column(name = "photos")
     private long photos;

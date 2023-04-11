@@ -11,8 +11,6 @@ public class Authorization {
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(transData.getChatId());
         sendMessage.setText(StringsAuthorization.LOGIN_TEXT);
-       // sendMessage.setReplyMarkup(InlineButtonsAuth.getKeyboard(StringsAuthorization.BUTTON_TEXT,
-             //   ButtonsCallbacks.loginButton));
 
         return sendMessage;
     }
@@ -22,8 +20,6 @@ public class Authorization {
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(transData.getChatId());
         sendMessage.setText(StringsAuthorization.PASSWORD_TEXT);
-       // sendMessage.setReplyMarkup(InlineButtonsAuth.getKeyboard(StringsAuthorization.PASSWORD_TEXT,
-            //    ButtonsCallbacks.passwordButton));
 
         return sendMessage;
     }

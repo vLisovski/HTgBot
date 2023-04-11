@@ -1,4 +1,4 @@
-package com.htgbot.service.menupages.authorization;
+package com.htgbot.service.menupages.about;
 
 import com.htgbot.service.ButtonsCallbacks;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
@@ -7,9 +7,9 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKe
 import java.util.ArrayList;
 import java.util.List;
 
-public class InlineButtonsAuth {
+public class InlineButtonsAbout {
 
-    public static InlineKeyboardMarkup getKeyboard(String buttonText, String buttonCallback){
+    public static InlineKeyboardMarkup getKeyboard(){
 
         List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
 
@@ -18,8 +18,8 @@ public class InlineButtonsAuth {
 
         row = new ArrayList<>();
         button = new InlineKeyboardButton();
-        button.setText(buttonText);
-        button.setCallbackData(buttonCallback);
+        button.setText(StringsAbout.BUTTON_BACK_TEXT);
+        button.setCallbackData(ButtonsCallbacks.ABOUT_BUTTON_BACK);
         row.add(button);
         keyboard.add(row);
 
@@ -28,6 +28,4 @@ public class InlineButtonsAuth {
 
         return replyKeyboardMarkup;
     }
-
-
 }

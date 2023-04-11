@@ -3,6 +3,7 @@ package com.htgbot.statemachine;
 public enum State {
 
     PASSWORD,
+    START,
     LOGIN,
     MAIN_MENU,
     ABOUT,
@@ -11,7 +12,6 @@ public enum State {
     FAQ,
     GUIDING,
     SUPPORT
-
 
 
 }

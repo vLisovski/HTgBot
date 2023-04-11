@@ -9,6 +9,7 @@ public class FAQ {
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(transData.getChatId());
         sendMessage.setText(StringsFAQ.FAQ_TEXT);
+        sendMessage.setReplyMarkup(InlineButtonsFAQ.getKeyboard());
 
         return sendMessage;
 

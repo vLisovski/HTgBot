@@ -8,6 +8,7 @@ public class About {
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(transData.getChatId());
         sendMessage.setText(StringsAbout.ABOUT_TEXT);
+        sendMessage.setReplyMarkup(InlineButtonsAbout.getKeyboard());
 
         return sendMessage;
     }

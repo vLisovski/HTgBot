@@ -9,7 +9,8 @@ public class Guiding {
 
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(transData.getChatId());
-        sendMessage.setText(StringsGuiding.GUIDING_MENU_TEXT);
+        sendMessage.setText(StringsGuiding.GUIDING_TEXT);
+        sendMessage.setReplyMarkup(InlineButtonsGuiding.getKeyboard());
 
         return sendMessage;
 

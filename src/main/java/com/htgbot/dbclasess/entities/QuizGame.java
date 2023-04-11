@@ -9,12 +9,12 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "choose_quiz")
+@Table(name = "quiz_game")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class ChooseQuiz {
+public class QuizGame {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -22,5 +22,16 @@ public class ChooseQuiz {
     @Column(name = "number_quiz")
     private int numberQuiz;
 
+    @Column(name = "name_quiz")
+    private int nameQuiz;
+
+    @Column(name = "answer_text")
+    private int answerText;
+
+    @Column(name = "question_text")
+    private int questionText;
+
+    @Column(name = "photos")
+    private int photos;
 
 }

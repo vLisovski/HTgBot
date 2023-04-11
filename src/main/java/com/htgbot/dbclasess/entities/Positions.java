@@ -22,4 +22,13 @@ public class Positions {
 
     @Column(name = "type")
     private String type;
+
+    public int getId() {
+        return id;
+    }
+
+    public String getType() {
+        return type;
+    }
+
 }

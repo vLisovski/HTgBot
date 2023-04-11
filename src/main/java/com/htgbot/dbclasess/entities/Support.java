@@ -26,4 +26,21 @@ public class Support {
 
     @Column(name = "chat_id")
     private long chatId;
+
+    public Support(String textFromSupport, long chatId) {
+        this.textFromSupport = textFromSupport;
+        this.chatId = chatId;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getTextFromSupport() {
+        return textFromSupport;
+    }
+
+    public long getChatId() {
+        return chatId;
+    }
 }

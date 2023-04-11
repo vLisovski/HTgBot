@@ -15,8 +15,8 @@ public class DbConnection {
         try {
             Configuration configuration = new Configuration().configure();
             configuration.addAnnotatedClass(User.class);
-            configuration.addAnnotatedClass(QuizText.class);
             configuration.addAnnotatedClass(QuizGame.class);
+            configuration.addAnnotatedClass(Support.class);
             configuration.addAnnotatedClass(Authorize.class);
             configuration.addAnnotatedClass(Positions.class);
 

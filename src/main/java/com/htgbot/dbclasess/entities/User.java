@@ -41,5 +41,36 @@ public class User {
     @Column(name = "photos")
     private long photos;
 
+    public User(long chatId, Positions position, String names, String contacts, QuizGame quizGame, long photos) {
+        this.chatId = chatId;
+        this.position = position;
+        this.names = names;
+        this.contacts = contacts;
+        this.quizGame = quizGame;
+        this.photos = photos;
+    }
 
+    public int getId() {
+        return id;
+    }
+
+    public long getChatId() {
+        return chatId;
+    }
+
+    public Positions getPosition() {
+        return position;
+    }
+
+    public String getNames() {
+        return names;
+    }
+
+    public String getContacts() {
+        return contacts;
+    }
+
+    public long getPhotos() {
+        return photos;
+    }
 }

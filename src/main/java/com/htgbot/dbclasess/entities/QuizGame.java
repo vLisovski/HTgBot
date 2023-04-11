@@ -34,4 +34,35 @@ public class QuizGame {
     @Column(name = "photos")
     private int photos;
 
+    public QuizGame(int numberQuiz, int nameQuiz, int answerText, int questionText, int photos) {
+        this.numberQuiz = numberQuiz;
+        this.nameQuiz = nameQuiz;
+        this.answerText = answerText;
+        this.questionText = questionText;
+        this.photos = photos;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public int getNumberQuiz() {
+        return numberQuiz;
+    }
+
+    public int getNameQuiz() {
+        return nameQuiz;
+    }
+
+    public int getAnswerText() {
+        return answerText;
+    }
+
+    public int getQuestionText() {
+        return questionText;
+    }
+
+    public int getPhotos() {
+        return photos;
+    }
 }

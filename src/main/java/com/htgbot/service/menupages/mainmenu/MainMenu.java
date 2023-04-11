@@ -9,7 +9,7 @@ public class MainMenu {
 
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(transData.getChatId());
-        sendMessage.setText(StringsMain.MAIN_TEXT);
+        sendMessage.setText(transData.getServiceText()+StringsMain.MAIN_TEXT);
         sendMessage.setReplyMarkup(InlineButtonsMain.getKeyboard());
 
         return sendMessage;

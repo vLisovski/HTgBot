@@ -49,7 +49,13 @@ public class ChatRouter {
             System.out.println("AUTHORIZE: LOGIN - "+transData.getDataStorage().get("login")
                     +" PASSWORD - "+transData.getDataStorage().get("password"));
             transData.setState(State.MAIN_MENU);
+        } else if(transData.getState().equals(State.SUPPORT)){
+            transData.getDataStorage().add("support", textData);
+            transData.setServiceText("Заявка успешно создана! Ожидайте ответа в разделе поддержки");
+            transData.setState(State.MAIN_MENU);
         } else {
+            transData.getDataStorage().clear();
+            transData.setServiceText("");
             transData.setState(parseState(textData));
         }
 

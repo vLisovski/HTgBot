@@ -9,6 +9,7 @@ import java.util.List;
 
 public class InlineButtonsGuiding {
 
+    //TODO кнопки с сотрудниками и просмотр информации по ним при нажатии
     public static InlineKeyboardMarkup getKeyboard(){
 
         List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();

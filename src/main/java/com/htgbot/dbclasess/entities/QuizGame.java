@@ -23,18 +23,18 @@ public class QuizGame {
     private int numberQuiz;
 
     @Column(name = "name_quiz")
-    private int nameQuiz;
-
-    @Column(name = "answer_text")
-    private int answerText;
+    private String nameQuiz;
 
     @Column(name = "question_text")
-    private int questionText;
+    private String questionText;
+
+    @Column(name = "answer_text")
+    private String answerText;
 
     @Column(name = "photos")
-    private int photos;
+    private String photos;
 
-    public QuizGame(int numberQuiz, int nameQuiz, int answerText, int questionText, int photos) {
+    public QuizGame(int numberQuiz, String nameQuiz, String answerText, String questionText, String photos) {
         this.numberQuiz = numberQuiz;
         this.nameQuiz = nameQuiz;
         this.answerText = answerText;
@@ -50,19 +50,19 @@ public class QuizGame {
         return numberQuiz;
     }
 
-    public int getNameQuiz() {
+    public String getNameQuiz() {
         return nameQuiz;
     }
 
-    public int getAnswerText() {
+    public String getAnswerText() {
         return answerText;
     }
 
-    public int getQuestionText() {
+    public String getQuestionText() {
         return questionText;
     }
 
-    public int getPhotos() {
+    public String getPhotos() {
         return photos;
     }
 }

@@ -9,7 +9,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "type_position")
+@Table(name = "positions")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor

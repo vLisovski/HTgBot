@@ -10,7 +10,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "user")
+@Table(name = "user", schema = "public")
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,7 +23,7 @@ public class User {
     @Column(name = "chat_id")
     private long chatId;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "type_position")
     private Positions position;
 
@@ -33,7 +33,7 @@ public class User {
     @Column(name = "contacts")
     private String contacts;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "quiz_game")
     private QuizGame quizGame;
 

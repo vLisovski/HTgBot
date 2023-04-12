@@ -7,6 +7,7 @@ import com.htgbot.service.menupages.employees.Employees;
 import com.htgbot.service.menupages.faq.FAQ;
 import com.htgbot.service.menupages.guiding.Guiding;
 import com.htgbot.service.menupages.mainmenu.MainMenu;
+import com.htgbot.service.menupages.result.Result;
 import com.htgbot.service.menupages.start.Start;
 import com.htgbot.service.menupages.support.Support;
 import com.htgbot.statemachine.State;
@@ -28,6 +29,7 @@ public class ServiceManager {
     private final Start start;
     private final Employees employees;
     private final Education education;
+    private final Result result;
 
     public ServiceManager() {
         pages = new HashMap<>();
@@ -41,7 +43,7 @@ public class ServiceManager {
         about = new About();
         faq = new FAQ();
         support = new Support();
-
+        result = new Result();
 
         pages.put(State.START, start::sendStartPage);
 
@@ -51,7 +53,38 @@ public class ServiceManager {
         pages.put(State.MAIN_MENU, mainMenu::sendMainMenuPage);
 
         pages.put(State.EDUCATION, education::sendEducationPage);
+        pages.put(State.OFFICIANT1, education::sendQuizPage);
+        pages.put(State.OFFICIANT2, education::sendQuizPage);
+        pages.put(State.OFFICIANT3, education::sendQuizPage);
+        pages.put(State.OFFICIANT4, education::sendQuizPage);
+        pages.put(State.OFFICIANT5, education::sendQuizPage);
+        pages.put(State.OFFICIANT6, education::sendQuizPage);
+        pages.put(State.OFFICIANT7, education::sendQuizPage);
+        pages.put(State.BARMAN1, education::sendQuizPage);
+        pages.put(State.BARMAN2, education::sendQuizPage);
+        pages.put(State.BARMAN3, education::sendQuizPage);
+        pages.put(State.BARMAN4, education::sendQuizPage);
+        pages.put(State.BARMAN5, education::sendQuizPage);
+        pages.put(State.BARMAN6, education::sendQuizPage);
+        pages.put(State.BARMAN7, education::sendQuizPage);
+        pages.put(State.COOK1, education::sendQuizPage);
+        pages.put(State.COOK2, education::sendQuizPage);
+        pages.put(State.COOK3, education::sendQuizPage);
+        pages.put(State.COOK4, education::sendQuizPage);
+        pages.put(State.COOK5, education::sendQuizPage);
+        pages.put(State.COOK6, education::sendQuizPage);
+        pages.put(State.COOK7, education::sendQuizPage);
+        pages.put(State.REST1, education::sendQuizPage);
+        pages.put(State.REST2, education::sendQuizPage);
+        pages.put(State.REST3, education::sendQuizPage);
+        pages.put(State.REST4, education::sendQuizPage);
         pages.put(State.GUIDING, guiding::sendGuidingPage);
+        pages.put(State.GUIDING1, education::sendQuizPage);
+        pages.put(State.GUIDING2, education::sendQuizPage);
+        pages.put(State.GUIDING3, education::sendQuizPage);
+        pages.put(State.GUIDING4, education::sendQuizPage);
+        pages.put(State.RESULT, result::sendResultPage);
+
         pages.put(State.EMPLOYEES, employees::sendEmployeesPage);
         pages.put(State.ABOUT, about::sendAboutPage);
         pages.put(State.FAQ, faq::sendFAQPage);

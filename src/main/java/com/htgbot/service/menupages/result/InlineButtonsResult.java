@@ -1,4 +1,4 @@
-package com.htgbot.service.menupages.guiding;
+package com.htgbot.service.menupages.result;
 
 import com.htgbot.service.ButtonsCallbacks;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
@@ -7,9 +7,8 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKe
 import java.util.ArrayList;
 import java.util.List;
 
-public class InlineButtonsGuiding {
+public class InlineButtonsResult {
 
-    //TODO кнопки с руководством и просмотр информации по ним при нажатии
     public static InlineKeyboardMarkup getKeyboard(){
 
         List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
@@ -19,8 +18,8 @@ public class InlineButtonsGuiding {
 
         row = new ArrayList<>();
         button = new InlineKeyboardButton();
-        button.setText(StringsGuiding.BUTTON_BACK_TEXT);
-        button.setCallbackData(ButtonsCallbacks.GUIDING_BUTTON_BACK);
+        button.setText(StringsResult.BUTTON_TEXT);
+        button.setCallbackData(ButtonsCallbacks.RESULT_BUTTON_TO_MAIN_MENU);
         row.add(button);
         keyboard.add(row);
 

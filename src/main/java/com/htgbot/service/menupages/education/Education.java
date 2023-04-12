@@ -1,84 +1,87 @@
 package com.htgbot.service.menupages.education;
 
+import com.htgbot.dbclasess.DbManager;
 import com.htgbot.statemachine.TransData;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Education {
-    public SendMessage sendEducationPage(TransData transData){
 
-        //TODO методы по доставанию листов викторин и заполнить лист калбеков
+    private final DbManager dbManager;
+
+    public Education() {
+        dbManager = new DbManager();
+    }
+
+    public SendMessage sendEducationPage(TransData transData) {
+
+        //нужен метод для получения квиза нужной профессии + знакомство с рестораном + квиз руководство
+        // List<String> quizGamesNames = dbManager.getQuizGameTable().getQuizGameNames(transData.getPosition());
         List<String> quizGamesNames = new ArrayList<>();
+        quizGamesNames.add("Оффициант");
+        quizGamesNames.add("Бармен");
+        quizGamesNames.add("Повар");
         List<String> quizGameButtonsCallbacks = new ArrayList<>();
+
+        String position = transData.getPosition();
+
+        if (position.equals("Барен")) {
+            quizGameButtonsCallbacks.add("BARMAN1");
+        } else if (position.equals("Повар")) {
+            quizGameButtonsCallbacks.add("COOK1");
+        } else {
+            quizGameButtonsCallbacks.add("OFFICIANT1");
+        }
+
+        quizGameButtonsCallbacks.add("REST1");
+        quizGameButtonsCallbacks.add("GUIDING1");
 
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(transData.getChatId());
         sendMessage.setText(StringsEducation.EDUCATION_TEXT);
-        sendMessage.setReplyMarkup(InlineButtonsEducation.getMainKeyboard(quizGamesNames,quizGameButtonsCallbacks ));
+        sendMessage.setReplyMarkup(InlineButtonsEducation.getMainKeyboard(quizGamesNames, quizGameButtonsCallbacks));
 
         return sendMessage;
     }
 
-    public SendMessage sendQuizCook1(TransData transData){
-        return null;
+    public SendMessage sendQuizPage(TransData transData) {
+
+//        if(transData.getPosition().equals("Бармен")){
+//            String questionsString = dbManager.getQuizGameTable().getQuestionGameFromBarmen();
+//        } else if (transData.getPosition().equals("Повар")) {
+//            String questionsString = dbManager.getQuizGameTable().getQuestionGameFromCook();
+//        } else {
+//            String questionsString = dbManager.getQuizGameTable().getQuestionFromWaiter();
+//        }
+
+        String questionsString = "1. Будете ли вы наливать напитки своим друзьям или родственникам бесплатно?" +
+                "/2. В каком коктейле присутствует водка?" +
+                "/3. Как общаться с клиентом?" +
+                "/4. В чем вы будете работать?" +
+                "/5. Разрешено ли быть на работе в шляпе?" +
+                "/6. Что используют для смешивания коктейлей?" +
+                "/7. Что используют для подачи крепких напитков?";
+
+        int numberOfQuestion = transData.getEducationData().getNumberQuestion();
+
+        String answersString = "aa bb cc dd/ee ff gg hh/ii jj kk ll/mm oo pp qq/rr ss tt ii";
+        List<String> answersList = UtilEducation
+                .parseStringToStringList(
+                        (UtilEducation.parseStringToStringList(answersString, "/").get(numberOfQuestion)), " ");
+
+        List<String> quizGameButtonsCallbacks = InlineButtonsEducation.getQuizGameButtonsCallbacks(transData);
+
+        SendMessage sendMessage = new SendMessage();
+        sendMessage.setChatId(transData.getChatId());
+        sendMessage.setText(
+                UtilEducation.parseStringToStringList(questionsString, "/")
+                        .get(numberOfQuestion));
+        sendMessage.setReplyMarkup(InlineButtonsEducation.getQuizKeyboard(answersList, quizGameButtonsCallbacks));
+
+        return sendMessage;
     }
-    public SendMessage sendQuizCook2(TransData transData){
-        return null;
-    }
-    public SendMessage sendQuizCook3(TransData transData){
-        return null;
-    }
-    public SendMessage sendQuizCook4(TransData transData){
-        return null;
-    }
-    public SendMessage sendQuizOfficiant1(TransData transData){
-        return null;
-    }
-    public SendMessage sendQuizOfficiant2(TransData transData){
-        return null;
-    }
-    public SendMessage sendQuizOfficiant3(TransData transData){
-        return null;
-    }
-    public SendMessage sendQuizOfficiant4(TransData transData){
-        return null;
-    }
-    public SendMessage sendQuizBarman1(TransData transData){
-        return null;
-    }
-    public SendMessage sendQuizBarman2(TransData transData){
-        return null;
-    }
-    public SendMessage sendQuizBarman3(TransData transData){
-        return null;
-    }
-    public SendMessage sendQuizBarman4(TransData transData){
-        return null;
-    }
-    public SendMessage sendQuizSafety1(TransData transData){
-        return null;
-    }
-    public SendMessage sendQuizSafety2(TransData transData){
-        return null;
-    }
-    public SendMessage sendQuizSafety3(TransData transData){
-        return null;
-    }
-    public SendMessage sendQuizSafety4(TransData transData){
-        return null;
-    }
-    public SendMessage sendQuizRest1(TransData transData){
-        return null;
-    }
-    public SendMessage sendQuizRest2(TransData transData){
-        return null;
-    }
-    public SendMessage sendQuizRest3(TransData transData){
-        return null;
-    }
-    public SendMessage sendQuizRest4(TransData transData){
-        return null;
-    }
+
 }

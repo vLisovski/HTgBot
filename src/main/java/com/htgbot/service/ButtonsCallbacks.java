@@ -13,17 +13,12 @@ public class ButtonsCallbacks {
 
     public static final String ABOUT_BUTTON_BACK = State.MAIN_MENU.toString();
     public static final String EMPLOYEES_BUTTON_BACK = State.MAIN_MENU.toString();
-    public static final String EMPLOYEE1_BUTTON = State.MAIN_MENU.toString();
-    public static final String EMPLOYEE2_BUTTON = State.MAIN_MENU.toString();
-    public static final String EMPLOYEE3_BUTTON = State.MAIN_MENU.toString();
-    public static final String EMPLOYEE4_BUTTON = State.MAIN_MENU.toString();
+
     public static final String EDUCATION_BUTTON_BACK = State.MAIN_MENU.toString();
     public static final String SUPPORT_BUTTON_BACK = State.MAIN_MENU.toString();
     public static final String GUIDING_BUTTON_BACK = State.MAIN_MENU.toString();
-    public static final String GUIDING1_BUTTON = State.MAIN_MENU.toString();
-    public static final String GUIDING2_BUTTON = State.MAIN_MENU.toString();
-    public static final String GUIDING3_BUTTON = State.MAIN_MENU.toString();
-    public static final String GUIDING4_BUTTON = State.MAIN_MENU.toString();
+
+    public static final String RESULT_BUTTON_TO_MAIN_MENU = State.MAIN_MENU.toString();
     public static final String FAQ_BUTTON_BACK = State.MAIN_MENU.toString();
 }
 

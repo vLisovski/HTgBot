@@ -41,13 +41,21 @@ public class User {
     @Column(name = "photos")
     private long photos;
 
-    public User(long chatId, Positions position, String names, String contacts, QuizGame quizGame, long photos) {
+    @Column(name = "quiz_status")
+    private boolean quizStatus;
+
+    public User(long chatId, Positions position, String names, String contacts, QuizGame quizGame, long photos, boolean quizStatus) {
         this.chatId = chatId;
         this.position = position;
         this.names = names;
         this.contacts = contacts;
         this.quizGame = quizGame;
         this.photos = photos;
+        this.quizStatus = quizStatus;
+    }
+
+    public void setQuizStatus() {
+        this.quizStatus = false;
     }
 
     public int getId() {
@@ -73,4 +81,6 @@ public class User {
     public long getPhotos() {
         return photos;
     }
+
+    public boolean QuizStatus() {return quizStatus;}
 }

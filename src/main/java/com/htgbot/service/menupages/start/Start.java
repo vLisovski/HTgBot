@@ -4,7 +4,6 @@ import com.htgbot.statemachine.TransData;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
 public class Start {
-
     public SendMessage sendStartPage(TransData transData){
 
         SendMessage sendMessage = new SendMessage();

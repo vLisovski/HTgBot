@@ -32,6 +32,14 @@ public class Support {
         this.chatId = chatId;
     }
 
+    public void setTextFromSupport(String textFromSupport) {
+        this.textFromSupport = textFromSupport;
+    }
+
+    public void setChatId(long chatId) {
+        this.chatId = chatId;
+    }
+
     public int getId() {
         return id;
     }

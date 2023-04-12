@@ -8,27 +8,35 @@ import org.hibernate.Session;
 import java.util.List;
 
 public class PositionsTable {
-    public Positions getWaiter() {
+
+    public String getPositionWaiter() {
 
         Session session = DbConnection.getInstance().getSessionFactory().openSession();
         {
-            return (Positions) session.createQuery("select type from Positions where id = 1", QuizGame.class).list();
+
+            List<Positions> query = (List<Positions>) session.createQuery("from Positions WHERE id = 1", Positions.class).list();
+            return query.get(0).getType();
         }
     }
 
-    public Positions getBarmen() {
+
+    public String getPositionBarmen() {
 
         Session session = DbConnection.getInstance().getSessionFactory().openSession();
         {
-            return (Positions) session.createQuery("select type from Positions where id = 2", QuizGame.class).list();
+
+            List<Positions> query = (List<Positions>) session.createQuery("from Positions WHERE id = 2", Positions.class).list();
+            return query.get(0).getType();
         }
     }
 
-    public Positions getCook() {
+    public String getPositionCook() {
 
         Session session = DbConnection.getInstance().getSessionFactory().openSession();
         {
-            return (Positions) session.createQuery("select type from Positions where id = 3", QuizGame.class).list();
+
+            List<Positions> query = (List<Positions>) session.createQuery("from Positions WHERE id = 3", Positions.class).list();
+            return query.get(0).getType();
         }
     }
 }

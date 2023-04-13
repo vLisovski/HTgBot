@@ -32,13 +32,6 @@ public class InlineButtonsMain {
 
         row = new ArrayList<>();
         button = new InlineKeyboardButton();
-        button.setText(StringsMain.MAIN_MENU_BUTTON_ABOUT_TEXT);
-        button.setCallbackData(ButtonsCallbacks.MAIN_MENU_BUTTON_ABOUT);
-        row.add(button);
-        keyboard.add(row);
-
-        row = new ArrayList<>();
-        button = new InlineKeyboardButton();
         button.setText(StringsMain.MAIN_MENU_BUTTON_SUPPORT_TEXT);
         button.setCallbackData(ButtonsCallbacks.MAIN_MENU_BUTTON_SUPPORT);
         row.add(button);

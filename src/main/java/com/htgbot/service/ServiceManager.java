@@ -1,10 +1,8 @@
 package com.htgbot.service;
 
-import com.htgbot.service.menupages.about.About;
 import com.htgbot.service.menupages.authorization.Authorization;
 import com.htgbot.service.menupages.education.Education;
 import com.htgbot.service.menupages.employees.Employees;
-import com.htgbot.service.menupages.guiding.Guiding;
 import com.htgbot.service.menupages.mainmenu.MainMenu;
 import com.htgbot.service.menupages.result.Result;
 import com.htgbot.service.menupages.start.Start;
@@ -12,6 +10,7 @@ import com.htgbot.service.menupages.support.Support;
 import com.htgbot.statemachine.State;
 import com.htgbot.statemachine.TransData;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -21,8 +20,6 @@ public class ServiceManager {
     private final Map<State, Service> pages;
     private final Authorization authorization;
     private final MainMenu mainMenu;
-    private final Guiding guiding;
-    private final About about;
     private final Support support;
     private final Start start;
     private final Employees employees;
@@ -36,9 +33,8 @@ public class ServiceManager {
         authorization = new Authorization();
         mainMenu = new MainMenu();
         education = new Education();
-        guiding = new Guiding();
         employees = new Employees();
-        about = new About();
+
         support = new Support();
         result = new Result();
 
@@ -75,6 +71,8 @@ public class ServiceManager {
         pages.put(State.REST2, education::sendQuizPage);
         pages.put(State.REST3, education::sendQuizPage);
         pages.put(State.REST4, education::sendQuizPage);
+        pages.put(State.REST5, education::sendQuizPage);
+        pages.put(State.REST6, education::sendQuizPage);
         pages.put(State.GUIDING1, education::sendQuizPage);
         pages.put(State.GUIDING2, education::sendQuizPage);
         pages.put(State.GUIDING3, education::sendQuizPage);
@@ -88,12 +86,11 @@ public class ServiceManager {
         pages.put(State.EMPLOYEE4, employees::sendEmployeePage);
         pages.put(State.EMPLOYEE5, employees::sendEmployeePage);
         pages.put(State.EMPLOYEE6, employees::sendEmployeePage);
-        pages.put(State.ABOUT, about::sendAboutPage);
 
         pages.put(State.SUPPORT, support::sendEnterAppealPage);
     }
 
     public SendMessage getPage(TransData transData) {
-        return pages.get(transData.getState()).sendPage(transData);
+            return pages.get(transData.getState()).sendPage(transData);
     }
 }

@@ -1,8 +1,10 @@
 package com.htgbot.statemachine;
 
 import com.htgbot.dbclasess.DbManager;
+import com.htgbot.service.ButtonsCallbacks;
 import com.htgbot.service.ServiceManager;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 
 import java.util.HashMap;
 import java.util.List;
@@ -115,6 +117,10 @@ public class ChatRouter {
         } else if (textData.contains("REST3")) {
             return State.REST4;
         } else if (textData.contains("REST4")) {
+            return State.REST5;
+        } else if(textData.contains("REST5")){
+            return State.REST6;
+        } else if (textData.contains("REST6")) {
             return State.MAIN_MENU;
         } else if (textData.contains("GUIDING1")) {
             return State.GUIDING2;
@@ -129,7 +135,7 @@ public class ChatRouter {
         }
     }
 
-    public SendMessage route(long chatId, String textData) throws Exception {
+    public SendMessage route(long chatId, String textData) {
 
         if (!chats.containsKey(chatId)) {
             chats.put(chatId, new TransData(chatId));
@@ -163,8 +169,11 @@ public class ChatRouter {
 
 
         } else if (transData.getState().equals(State.SUPPORT)) {
-            transData.getDataStorage().add("support", textData);
-            transData.setServiceText("Заявка успешно создана! Ожидайте ответа в разделе поддержки");
+            if(!textData.equals(ButtonsCallbacks.SUPPORT_BUTTON_BACK)){
+                dbManager.getSupportTable().setTextSupportAndChatId(textData,chatId);
+                transData.setServiceText("Заявка успешно создана! Ожидайте ответа в разделе поддержки");
+                transData.setState(State.MAIN_MENU);
+            }
             transData.setState(State.MAIN_MENU);
         } else if (transData.getState().equals(State.EDUCATION)) {
 

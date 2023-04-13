@@ -111,6 +111,36 @@ public class InlineButtonsEducation {
         }
         return quizGameButtonsCallbacks;
     }
+
+    private static List<String> getCallbacksToListFromStatesListForRestAndGuiding(TransData transData, List<String> callbacks){
+
+        int numberOfQuestion = transData.getEducationData().getNumberQuestion();
+        List<String> quizGameButtonsCallbacks = new ArrayList<>();
+        switch (numberOfQuestion){
+            case 0:{
+                quizGameButtonsCallbacks.add(callbacks.get(0));
+            }break;
+            case 1:{
+                quizGameButtonsCallbacks.add(callbacks.get(1));
+            }break;
+            case 2:{
+                quizGameButtonsCallbacks.add(callbacks.get(2));
+            }break;
+            case 3:{
+                quizGameButtonsCallbacks.add(callbacks.get(3));
+            }break;
+            case 4:{
+                quizGameButtonsCallbacks.add(callbacks.get(4));
+            }break;
+            case 5:{
+                quizGameButtonsCallbacks.add(callbacks.get(5));
+            }break;
+            case 6:{
+                quizGameButtonsCallbacks.add(callbacks.get(6));
+            }break;
+        }
+        return quizGameButtonsCallbacks;
+    }
     public static List<String> getQuizGameButtonsCallbacks(TransData transData){
 
         int numberOfQuiz = transData.getEducationData().getNumberQuiz();
@@ -213,41 +243,19 @@ public class InlineButtonsEducation {
         } else if (numberOfQuiz == 4) {
             List<String> callbacks = new ArrayList<>();
             callbacks.add("REST11");
-            callbacks.add("REST12");
-            callbacks.add("REST13");
-            callbacks.add("REST14");
             callbacks.add("REST21");
-            callbacks.add("REST22");
-            callbacks.add("REST23");
-            callbacks.add("REST24");
             callbacks.add("REST31");
-            callbacks.add("REST32");
-            callbacks.add("REST33");
-            callbacks.add("REST34");
             callbacks.add("REST41");
-            callbacks.add("REST42");
-            callbacks.add("REST43");
-            callbacks.add("REST44");
-            quizGameButtonsCallbacks = getCallbacksToListFromStatesList(transData, callbacks);
+            callbacks.add("REST51");
+            callbacks.add("REST61");
+            quizGameButtonsCallbacks = getCallbacksToListFromStatesListForRestAndGuiding(transData, callbacks);
         } else {
             List<String> callbacks = new ArrayList<>();
             callbacks.add("GUIDING11");
-            callbacks.add("GUIDING12");
-            callbacks.add("GUIDING13");
-            callbacks.add("GUIDING14");
             callbacks.add("GUIDING21");
-            callbacks.add("GUIDING22");
-            callbacks.add("GUIDING23");
-            callbacks.add("GUIDING24");
             callbacks.add("GUIDING31");
-            callbacks.add("GUIDING32");
-            callbacks.add("GUIDING33");
-            callbacks.add("GUIDING34");
             callbacks.add("GUIDING41");
-            callbacks.add("GUIDING42");
-            callbacks.add("GUIDING43");
-            callbacks.add("GUIDING44");
-            quizGameButtonsCallbacks = getCallbacksToListFromStatesList(transData, callbacks);
+            quizGameButtonsCallbacks = getCallbacksToListFromStatesListForRestAndGuiding(transData, callbacks);
         }
 
         return quizGameButtonsCallbacks;

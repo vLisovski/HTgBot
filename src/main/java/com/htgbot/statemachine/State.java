@@ -34,6 +34,8 @@ public enum State {
     REST2,
     REST3,
     REST4,
+    REST5,
+    REST6,
     RESULT,
     //endregion
 

@@ -45,6 +45,8 @@ public class BotInitializer extends TelegramLongPollingBot {
                     chatId = update.getMessage().getChatId();
                     textData = update.getMessage().getText();
 
+                    System.out.println();
+
                     logger.info(String.format("INPUT: %d:%s", chatId, textData));
 
                     SendMessage sendMessage = chatRouter.route(chatId, textData);
@@ -101,6 +103,7 @@ public class BotInitializer extends TelegramLongPollingBot {
     }
     @Override
     public void onUpdateReceived(Update update) {
+
         SessionThread sessionThread = new SessionThread(chatRouter, update, this);
         sessionThread.start();
     }

@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InlineButtonsSupport {
-
     public static InlineKeyboardMarkup getKeyboard(){
 
         List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();

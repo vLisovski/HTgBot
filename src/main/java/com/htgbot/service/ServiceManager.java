@@ -4,7 +4,6 @@ import com.htgbot.service.menupages.about.About;
 import com.htgbot.service.menupages.authorization.Authorization;
 import com.htgbot.service.menupages.education.Education;
 import com.htgbot.service.menupages.employees.Employees;
-import com.htgbot.service.menupages.faq.FAQ;
 import com.htgbot.service.menupages.guiding.Guiding;
 import com.htgbot.service.menupages.mainmenu.MainMenu;
 import com.htgbot.service.menupages.result.Result;
@@ -24,7 +23,6 @@ public class ServiceManager {
     private final MainMenu mainMenu;
     private final Guiding guiding;
     private final About about;
-    private final FAQ faq;
     private final Support support;
     private final Start start;
     private final Employees employees;
@@ -41,7 +39,6 @@ public class ServiceManager {
         guiding = new Guiding();
         employees = new Employees();
         about = new About();
-        faq = new FAQ();
         support = new Support();
         result = new Result();
 
@@ -78,16 +75,21 @@ public class ServiceManager {
         pages.put(State.REST2, education::sendQuizPage);
         pages.put(State.REST3, education::sendQuizPage);
         pages.put(State.REST4, education::sendQuizPage);
-        pages.put(State.GUIDING, guiding::sendGuidingPage);
         pages.put(State.GUIDING1, education::sendQuizPage);
         pages.put(State.GUIDING2, education::sendQuizPage);
         pages.put(State.GUIDING3, education::sendQuizPage);
         pages.put(State.GUIDING4, education::sendQuizPage);
         pages.put(State.RESULT, result::sendResultPage);
 
-        pages.put(State.EMPLOYEES, employees::sendEmployeesPage);
+        pages.put(State.EMPLOYEES, employees::sendEmployeesMainPage);
+        pages.put(State.EMPLOYEE1, employees::sendEmployeePage);
+        pages.put(State.EMPLOYEE2, employees::sendEmployeePage);
+        pages.put(State.EMPLOYEE3, employees::sendEmployeePage);
+        pages.put(State.EMPLOYEE4, employees::sendEmployeePage);
+        pages.put(State.EMPLOYEE5, employees::sendEmployeePage);
+        pages.put(State.EMPLOYEE6, employees::sendEmployeePage);
         pages.put(State.ABOUT, about::sendAboutPage);
-        pages.put(State.FAQ, faq::sendFAQPage);
+
         pages.put(State.SUPPORT, support::sendEnterAppealPage);
     }
 

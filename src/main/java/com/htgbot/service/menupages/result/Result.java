@@ -36,6 +36,7 @@ public class Result {
 
         if(getEducationResult(transData)){
             sendMessage.setText("Тест выполнен верно!");
+            dbManager.getUserTable().setQuizStatusTrue(dbManager.getUserTable().getUserId(transData.getChatId()));
         }else {
             sendMessage.setText("Тест выполнен c ошибками. Вернитесь к списку тестов и попробуйте еще раз!");
         }

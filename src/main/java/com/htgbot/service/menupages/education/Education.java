@@ -5,7 +5,6 @@ import com.htgbot.statemachine.TransData;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class Education {
@@ -18,22 +17,34 @@ public class Education {
 
     public SendMessage sendEducationPage(TransData transData) {
 
-        //нужен метод для получения квиза нужной профессии + знакомство с рестораном + квиз руководство
-        // List<String> quizGamesNames = dbManager.getQuizGameTable().getQuizGameNames(transData.getPosition());
-        List<String> quizGamesNames = new ArrayList<>();
-        quizGamesNames.add("Оффициант");
-        quizGamesNames.add("Бармен");
-        quizGamesNames.add("Повар");
+        boolean quizStatus = dbManager.getUserTable().getQuizStatus(transData.getChatId());
+
+        List<String> quizGamesNames = dbManager.getQuizGameTable().getQuizNamesList();
+
         List<String> quizGameButtonsCallbacks = new ArrayList<>();
 
         String position = transData.getPosition();
 
-        if (position.equals("Барен")) {
-            quizGameButtonsCallbacks.add("BARMAN1");
-        } else if (position.equals("Повар")) {
-            quizGameButtonsCallbacks.add("COOK1");
+        if (!quizStatus) {
+            if (position.equals("Бармен")) {
+                quizGameButtonsCallbacks.add("BARMAN1");
+                quizGamesNames.remove("Оффициант");
+                quizGamesNames.remove("Повар");
+
+            } else if (position.equals("Повар")) {
+                quizGameButtonsCallbacks.add("COOK1");
+                quizGamesNames.remove("Оффициант");
+                quizGamesNames.remove("Бармен");
+
+            } else {
+                quizGameButtonsCallbacks.add("OFFICIANT1");
+                quizGamesNames.remove("Повар");
+                quizGamesNames.remove("Бармен");
+            }
         } else {
-            quizGameButtonsCallbacks.add("OFFICIANT1");
+            quizGamesNames.remove("Оффициант");
+            quizGamesNames.remove("Повар");
+            quizGamesNames.remove("Бармен");
         }
 
         quizGameButtonsCallbacks.add("REST1");
@@ -49,36 +60,44 @@ public class Education {
 
     public SendMessage sendQuizPage(TransData transData) {
 
-//        if(transData.getPosition().equals("Бармен")){
-//            String questionsString = dbManager.getQuizGameTable().getQuestionGameFromBarmen();
-//        } else if (transData.getPosition().equals("Повар")) {
-//            String questionsString = dbManager.getQuizGameTable().getQuestionGameFromCook();
-//        } else {
-//            String questionsString = dbManager.getQuizGameTable().getQuestionFromWaiter();
-//        }
+        String questionsString;
+        String answersString;
 
-        String questionsString = "1. Будете ли вы наливать напитки своим друзьям или родственникам бесплатно?" +
-                "/2. В каком коктейле присутствует водка?" +
-                "/3. Как общаться с клиентом?" +
-                "/4. В чем вы будете работать?" +
-                "/5. Разрешено ли быть на работе в шляпе?" +
-                "/6. Что используют для смешивания коктейлей?" +
-                "/7. Что используют для подачи крепких напитков?";
+        if (!dbManager.getUserTable().getQuizStatus(transData.getChatId())) {
+            if (transData.getPosition().equals("Бармен")) {
+                questionsString = dbManager.getQuizGameTable().getQuestionGameFromBarmen();
+                answersString = dbManager.getQuizGameTable().getAnswerFromBarmen();
+            } else if (transData.getPosition().equals("Повар")) {
+                questionsString = dbManager.getQuizGameTable().getQuestionGameFromCook();
+                answersString = dbManager.getQuizGameTable().getAnswerFromCook();
+            } else {
+                questionsString = dbManager.getQuizGameTable().getQuestionFromWaiter();
+                answersString = dbManager.getQuizGameTable().getAnswerFromWaiter();
+            }
+        } else if (transData.getState().toString().contains("REST")) {
+            questionsString = dbManager.getQuizGameTable().getQuestionGameFromRestaurant();
+            answersString = dbManager.getQuizGameTable().getQuizAnswers(4);
+        } else {
+            questionsString = dbManager.getQuizGameTable().getQuestionGameFromAdministration();
+            answersString = dbManager.getQuizGameTable().getQuizAnswers(5);
+        }
 
         int numberOfQuestion = transData.getEducationData().getNumberQuestion();
 
-        String answersString = "aa bb cc dd/ee ff gg hh/ii jj kk ll/mm oo pp qq/rr ss tt ii";
         List<String> answersList = UtilEducation
                 .parseStringToStringList(
-                        (UtilEducation.parseStringToStringList(answersString, "/").get(numberOfQuestion)), " ");
+                        (UtilEducation.parseStringToStringList(answersString, "/").get(numberOfQuestion)), "\\.");
+        System.out.println(answersList);
 
         List<String> quizGameButtonsCallbacks = InlineButtonsEducation.getQuizGameButtonsCallbacks(transData);
+        System.out.println("QUIZ BUTTONS CALLBACKS:" + quizGameButtonsCallbacks);
 
         SendMessage sendMessage = new SendMessage();
         sendMessage.setChatId(transData.getChatId());
         sendMessage.setText(
                 UtilEducation.parseStringToStringList(questionsString, "/")
                         .get(numberOfQuestion));
+
         sendMessage.setReplyMarkup(InlineButtonsEducation.getQuizKeyboard(answersList, quizGameButtonsCallbacks));
 
         return sendMessage;

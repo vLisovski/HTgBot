@@ -3,6 +3,7 @@ package com.htgbot.dbclasess.tables;
 import com.htgbot.dbclasess.dbconnection.DbConnection;
 import com.htgbot.dbclasess.entities.QuizGame;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
@@ -117,6 +118,16 @@ public class QuizGameTable {
         }
     }
 
+    public String getAnswerFromAdministration() {
+
+        Session session = DbConnection.getInstance().getSessionFactory().openSession();
+        {
+
+            List<QuizGame> query = (List<QuizGame>) session.createQuery("from QuizGame WHERE numberQuiz = 4", QuizGame.class).list();
+            return query.get(0).getAnswerText();
+        }
+    }
+
 
     public String getPhotosRestaurant() {
 
@@ -139,15 +150,16 @@ public class QuizGameTable {
         }
     }
 
-
-    public String getAnswerFromAdministration() {
+    public String getQuizAnswers(int numberQuiz){
 
         Session session = DbConnection.getInstance().getSessionFactory().openSession();
-        {
 
-            List<QuizGame> query = (List<QuizGame>) session.createQuery("from QuizGame WHERE numberQuiz = 5", QuizGame.class).list();
-            return query.get(0).getAnswerText();
-        }
+        String queryString = "select answerText from QuizGame where numberQuiz=:numberQuiz";
+        Query query = session.createQuery(queryString);
+        query.setParameter("numberQuiz",numberQuiz);
+
+        return (String) query.list().get(0);
+
     }
 
 
@@ -160,4 +172,13 @@ public class QuizGameTable {
             return query.get(0).getPhotos();
         }
     }
+
+    public List<String> getQuizNamesList() {
+
+        Session session = DbConnection.getInstance().getSessionFactory().openSession();
+        {
+            return session.createQuery("select nameQuiz from QuizGame", String.class).list();
+        }
+    }
+
 }

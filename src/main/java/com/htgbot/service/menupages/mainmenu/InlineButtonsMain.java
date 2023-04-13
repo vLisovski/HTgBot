@@ -25,13 +25,6 @@ public class InlineButtonsMain {
 
         row = new ArrayList<>();
         button = new InlineKeyboardButton();
-        button.setText(StringsMain.MAIN_MENU_BUTTON_GUIDING_TEXT);
-        button.setCallbackData(ButtonsCallbacks.MAIN_MENU_BUTTON_GUIDING);
-        row.add(button);
-        keyboard.add(row);
-
-        row = new ArrayList<>();
-        button = new InlineKeyboardButton();
         button.setText(StringsMain.MAIN_MENU_BUTTON_EMPLOYEES_TEXT);
         button.setCallbackData(ButtonsCallbacks.MAIN_MENU_BUTTON_EMPLOYEES);
         row.add(button);
@@ -41,13 +34,6 @@ public class InlineButtonsMain {
         button = new InlineKeyboardButton();
         button.setText(StringsMain.MAIN_MENU_BUTTON_ABOUT_TEXT);
         button.setCallbackData(ButtonsCallbacks.MAIN_MENU_BUTTON_ABOUT);
-        row.add(button);
-        keyboard.add(row);
-
-        row = new ArrayList<>();
-        button = new InlineKeyboardButton();
-        button.setText(StringsMain.MAIN_MENU_BUTTON_FAQ_TEXT);
-        button.setCallbackData(ButtonsCallbacks.MAIN_MENU_BUTTON_FAQ);
         row.add(button);
         keyboard.add(row);
 

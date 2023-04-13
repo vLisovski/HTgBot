@@ -43,10 +43,10 @@ public enum State {
     EMPLOYEE2,
     EMPLOYEE3,
     EMPLOYEE4,
+    EMPLOYEE5,
+    EMPLOYEE6,
     //endregion
 
-    FAQ,
-    GUIDING,
     GUIDING1,
     GUIDING2,
     GUIDING3,
